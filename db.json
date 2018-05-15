@@ -1,0 +1,12 @@
+{
+  "venues": [
+    { "id": "23", "name": "Hapa Sushi"},
+    { "id": "47", "name": "Lion Head Pub"}
+  ],
+  "menus": [
+    { "id": "1", "eventTypeName": "HappyHour", "venueId": "23" },
+    { "id": "2", "eventTypeName": "LateNight", "venueId": "47" },
+    { "id": "3", "eventTypeName": "Brunch", "venueId": "47" },
+    { "id": "4", "eventTypeName": "DailySpecials", "venueId": "23" }
+  ]
+}
