@@ -75,11 +75,29 @@ const mutation = new GraphQLObjectType ({
           .then(response => response.data);
       }
     },
+    addVenue: {
+      type: VenueType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parentValue, { name }) {
+        return axios.post(`http://localhost:3000/venues`, { name })
+          .then(response => response.data);
+      }
+    },
     deleteMenu: {
       type: MenuType,
       args: { id: { type: new GraphQLNonNull(GraphQLString) }},
       resolve(parentValue, args) {
         return axios.delete(`http://localhost:3000/menus/${args.id}`)
+          .then(res => res.data);
+      }
+    },
+    deleteVenue: {
+      type: VenueType,
+      args: { id: { type: new GraphQLNonNull(GraphQLString) }},
+      resolve(parentValue, args) {
+        return axios.delete(`http://localhost:3000/venues/${args.id}`)
           .then(res => res.data);
       }
     },
@@ -92,6 +110,17 @@ const mutation = new GraphQLObjectType ({
       },
       resolve(parentValue, args) {
         return axios.patch(`http://localhost:3000/menus/${args.id}`, args)
+          .then(response => response.data);
+      }
+    },
+    updateVenue: {
+      type: VenueType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: GraphQLString },
+      },
+      resolve(parentValue, args) {
+        return axios.patch(`http://localhost:3000/venues/${args.id}`, args)
           .then(response => response.data);
       }
     }
